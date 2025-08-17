@@ -1,0 +1,11 @@
+{
+  "name": "template-vitev1",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "stack": "concurrently \"npm run dev --prefix frontend\" \"npm run start:dev --prefix backend\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
