@@ -1,7 +1,8 @@
-# 🚀 Template Fullstack - Vite + React + Tailwind + shadcn/ui + NestJS
+# 🚀 Template Fullstack - Vite + React + Tailwind V4 + Shadcn/ui + NestJS
 
 Este repositorio es un **template fullstack** que combina **Frontend + Backend** en un solo entorno.  
 La idea de un **template** es que, al clonarlo y ejecutar un simple comando, obtienes un **entorno completo de desarrollo** ya configurado, listo para empezar a programar.
+<img width="1359" height="632" alt="imagen" src="https://github.com/user-attachments/assets/0e69e197-e31e-4229-b5af-cdc24dc6e33f" />
 
 ---
 
