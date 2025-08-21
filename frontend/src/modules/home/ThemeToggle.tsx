@@ -48,9 +48,11 @@ export function ThemeProvider({
     },
   };
   return (
-    <ThemeProviderContext.Provider value={value}>
-      {children}
-    </ThemeProviderContext.Provider>
+    <>
+      <ThemeProviderContext.Provider value={value}>
+        {children}
+      </ThemeProviderContext.Provider>
+    </>
   );
 }
 
@@ -63,24 +65,25 @@ export function useTheme() {
 export function ThemeToggle() {
   const { setTheme } = useTheme();
   return (
-    <div className="fixed top-2 right-2 flex space-x-2">
-      <Button
-        variant="secondary"
-        size="icon"
-        onClick={() => setTheme("light")}
-        className="size-8"
-      >
-        ☀
-      </Button>
-      <Button
-        variant="secondary"
-        size="icon"
-        onClick={() => setTheme("dark")}
-        className="size-8"
-      >
-        🌙
-      </Button>
-    </div>
+    <>
+      <div className="fixed top-2 right-2 flex space-x-2">
+        <Button
+          variant="secondary"
+          size="icon"
+          onClick={() => setTheme("light")}
+          className="size-8"
+        >
+          ☀
+        </Button>
+        <Button
+          variant="secondary"
+          size="icon"
+          onClick={() => setTheme("dark")}
+          className="size-8"
+        >
+          🌙
+        </Button>
+      </div>
+    </>
   );
 }
-
