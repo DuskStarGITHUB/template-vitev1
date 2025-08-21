@@ -1,3 +1,4 @@
+// modules/home/homeRouter.tsx
 /**
  * =====================================================
  *  NAME    : homeRouter.tsx
@@ -9,11 +10,10 @@
 import { ThemeProvider, ThemeToggle } from "./ThemeToggle";
 
 // MODULE
-export default function Router() {
+export default function HomeRouter() {
   return (
     <ThemeProvider defaultTheme="light">
       <div
-        className="min-h-screen"
         style={{
           backgroundColor: "var(--background)",
           color: "var(--foreground)",
