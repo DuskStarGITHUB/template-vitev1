@@ -7,7 +7,7 @@
  */
 
 // ROUTERS
-import HomeRouter from "../modules/home/homeRouter";
+import HomeRouter from "@/modules/home/homeRouter";
 
 // DEFAULT
 export default function ModulesRouter() {
