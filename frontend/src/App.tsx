@@ -6,7 +6,7 @@
  */
 
 // ROUTERS
-import ModulesRouter from "./routers/modulesRouter.tsx";
+import ModulesRouter from "@/routers/modulesRouter";
 
 // DEPLOY
 export default function App() {
