@@ -2,7 +2,6 @@
 
 Este repositorio es un **template fullstack** que combina **Frontend + Backend** en un solo entorno.  
 La idea de un **template** es que, al clonarlo y ejecutar un simple comando, obtienes un **entorno completo de desarrollo** ya configurado, listo para empezar a programar.
-<img width="1359" height="632" alt="imagen" src="https://github.com/user-attachments/assets/0e69e197-e31e-4229-b5af-cdc24dc6e33f" />
 
 ---
 
@@ -26,21 +25,26 @@ template-vitev1/
 📂 Estructura del código:
 ```markdown
 backend/src/
-├── controllers/   → Controladores (manejo de rutas)
-│   └── main.controller.ts
-├── middlewares/   → Middlewares personalizados
-│   └── main.middleware.ts
-├── services/      → Servicios (lógica de negocio)
-│   └── main.service.ts
-├── utils/         → Funciones de utilidad
-│   └── main.util.ts
-├── main.module.ts → Módulo raíz de NestJS
-└── main.ts        → Punto de entrada
+├── app.module.ts          → Módulo principal de la aplicación
+├── main.ts               → Punto de entrada del servidor
+└── server/               → Módulo de servidor (health check)
+    ├── server.controller.ts      → Controlador - Maneja ruta GET / (RAIZ)
+    ├── server.controller.spec.ts → Tests del controlador
+    └── server.module.ts          → Módulo - Organiza dependencias
 ```
 
-📌 Al iniciar, el backend responde con:  
-```markdown
-"Backend activo" # puerto: 3000
+## 🎯 Arquitectura NestJS
+
+📌 El backend responde en: **http://localhost:3000/** con:
+```json
+{
+  "message": "Backend activo",
+  "framework": "NestJS",
+  "runtime": "Node.js",
+  "packageManager": "npm",
+  "language": "TypeScript",
+  "timestamp": "2024-01-01T12:00:00.000Z"
+}
 ```
 
 ---
@@ -55,24 +59,29 @@ backend/src/
 
 ```markdown
 frontend/src/
-├── components/    → Componentes reutilizables
-│   ├── app/       → Ejemplo de componentes globales
-│   └── ui/        → Componentes de UI (shadcn/ui)
-├── lib/           → Utilidades compartidas
-├── modules/       → Módulos organizados por feature
-│   ├── auth/      → Ejemplo de módulo de autenticación
-│   └── home/      → Módulo de home con router y ThemeToggle
-├── routers/       → Definición de rutas
-├── App.tsx        → Componente raíz
-├── main.tsx       → Punto de entrada
-└── index.css      → Estilos globales
+├── components/           → Componentes reutilizables
+│   ├── app/             → Componentes globales
+│   │   └── ThemeToggle.tsx
+│   └── ui/              → Componentes de UI (shadcn/ui)
+│       └── button.tsx
+├── lib/                 → Utilidades compartidas
+│   └── utils.ts
+├── modules/             → Módulos organizados por feature
+│   ├── auth/            → Módulo de autenticación
+│   │   ├── authPage.tsx
+│   │   └── authRouter.tsx
+│   └── home/            → Módulo de home
+│       ├── homePage.tsx
+│       └── homeRouter.tsx
+├── routers/             → Definición de rutas
+│   └── modulesRouter.tsx
+├── App.tsx              → Componente raíz
+├── main.tsx             → Punto de entrada
+├── index.css            → Estilos globales
+└── vite-env.d.ts        → Tipos de Vite
 ```
 
-📌 Al iniciar, el frontend responde con:
-
-```markdown
-"HELLO!" # puerto: 5173
-```
+📌 El frontend se ejecuta en: **http://localhost:5173/** y muestra la interfaz React con shadcn/ui
 
 ---
 
@@ -109,13 +118,12 @@ npm run stack
 ### 🖥️ Ejecutar de forma individual
 
 * **Frontend:**
-
   ```bash
   cd frontend
   npm run dev
   ```
-* **Backend:**
 
+* **Backend:**
   ```bash
   cd backend
   npm run start:dev
@@ -129,20 +137,17 @@ Este template ya está configurado con **shadcn/ui** y **TailwindCSS V4**.
 Para añadir un componente nuevo:
 
 1. Instalar el CLI (solo una vez, en el frontend):
-
    ```bash
    npx shadcn-ui init
    ```
 
 2. Añadir un componente:
-
    ```bash
    npx shadcn-ui add button
    ```
 
 3. El componente aparecerá en `frontend/src/components/ui/`
    y lo podrás importar en cualquier parte del proyecto:
-
    ```tsx
    import { Button } from "@/components/ui/button"
 
@@ -151,7 +156,5 @@ Para añadir un componente nuevo:
    }
    ```
 
-
-✨ Ahora solo clona este repo y empieza a construir tu aplicación fullstack.
-
 ---
+

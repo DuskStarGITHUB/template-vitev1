@@ -7,7 +7,7 @@
 
 // DEPENDENCIES
 import { NestFactory } from '@nestjs/core';
-import { AppModule } from './main.module';
+import { AppModule } from './app.module';
 
 // EXEC
 async function bootstrap() {
