@@ -1,15 +1,14 @@
 /**
  * =====================================================
  *  NAME    : ThemeToggle.tsx
- *  DESCRIPTION: component buttons light/dark theme
+ *  DESCRIPTION: light/dark theme provider & toggle
  * =====================================================
  */
 
 // DEPENDENCIES
-import { Button } from "@/components/ui/button";
 import React, { createContext, useContext, useEffect, useState } from "react";
 
-// FUNCTIONS
+// VARS
 type Theme = "dark" | "light";
 type ThemeProviderProps = {
   children: React.ReactNode;
@@ -26,7 +25,7 @@ const initialState: ThemeProviderState = {
 };
 const ThemeProviderContext = createContext<ThemeProviderState>(initialState);
 
-// COMPONENT 1
+// COMPONENT
 export function ThemeProvider({
   children,
   defaultTheme = "light",
@@ -39,51 +38,15 @@ export function ThemeProvider({
     const root = window.document.documentElement;
     root.classList.remove("light", "dark");
     root.classList.add(theme);
-  }, [theme]);
-  const value = {
-    theme,
-    setTheme: (theme: Theme) => {
-      localStorage.setItem(storageKey, theme);
-      setThemeState(theme);
-    },
-  };
+    localStorage.setItem(storageKey, theme);
+  }, [theme, storageKey]);
+  const value = { theme, setTheme: setThemeState };
   return (
-    <>
-      <ThemeProviderContext.Provider value={value}>
-        {children}
-      </ThemeProviderContext.Provider>
-    </>
+    <ThemeProviderContext.Provider value={value}>
+      {children}
+    </ThemeProviderContext.Provider>
   );
 }
-
-// EXPORT COMPONENT 1
 export function useTheme() {
   return useContext(ThemeProviderContext);
-}
-
-// COMPONENT 2
-export function ThemeToggle() {
-  const { setTheme } = useTheme();
-  return (
-    <>
-      <div className="fixed top-2 right-2 flex space-x-2">
-        <Button
-          variant="secondary"
-          size="icon"
-          onClick={() => setTheme("light")}
-          className="size-8"
-        >
-          ☀
-        </Button>
-        <Button
-          variant="secondary"
-          size="icon"
-          onClick={() => setTheme("dark")}
-          className="size-8"
-        >
-          🌙
-        </Button>
-      </div>
-    </>
-  );
 }

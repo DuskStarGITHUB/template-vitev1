@@ -1,18 +1,18 @@
 /**
  * =====================================================
- *  NAME    : homeRouter.tsx
- *  DESCRIPTION: module home init
+ *  NAME    : authRouter.tsx
+ *  DESCRIPTION: module auth init
  * =====================================================
  */
 
 // ROUTES
-import HomePage from "./homePage";
+import AuthPage from "./authPage";
 
 // ASEEMBLY MODULE
-export default function HomeRouter() {
+export default function AuthRouter() {
   return (
     <>
-      <HomePage />
+      <AuthPage />
     </>
   );
 }

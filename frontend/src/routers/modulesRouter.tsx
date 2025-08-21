@@ -2,18 +2,17 @@
 /**
  * =====================================================
  *  NAME    : modulesRouter.tsx
- *  DESCRIPTION: example directory
+ *  DESCRIPTION: router modules
  * =====================================================
  */
 
 // ROUTERS
+import AuthRouter from "@/modules/auth/authRouter";
 import HomeRouter from "@/modules/home/homeRouter";
 
-// DEFAULT
+// APP ASSEMBLY ROUTES
 export default function ModulesRouter() {
-  return (
-    <>
-      <HomeRouter />
-    </>
-  );
+  const token = localStorage.getItem("module");
+  const isAuthenticated = token === "true";
+  return <>{isAuthenticated ? <HomeRouter /> : <AuthRouter />}</>;
 }
