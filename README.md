@@ -94,6 +94,7 @@ En el **package.json raíz** tienes scripts para manejar toda la stack:
 Instalar dependencias en **backend** y **frontend** con un solo comando:
 
 ```bash
+npm i
 npm run init
 ```
 
